@@ -1,0 +1,134 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(15, 13, 13, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+
+
+
+/*-------HEADER------*/
+
+header {
+  display: flex;
+  height: 100px;
+  place-items: center;
+}
+
+.menu {
+  height: 100px;
+  width: 100%;
+  align-content: center;
+}
+
+header a {
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 3%;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+header a:hover {
+  color: #4824ff;
+  filter: drop-shadow(0px 0px 5 px #4824ff);
+}
+
+.btn {
+  height: 55px;
+  width: 222px;
+  border-radius: 55px;
+  background: #4824ff;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+  margin-right: 2%;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover {
+  filter: drop-shadow(0px 0px 35px #4824ff40);
+}
+
+.btn:before {
+  content: '';
+  position: absolute;
+  height: 300px;
+  width: 30px;
+  background: #ffffffbd;
+  filter: blur(2px);
+  transition: 1.5s;
+  transform: rotate(-20deg) translateX(-50px) translateY(-200px);
+}
+
+.btn:hover:before {
+  transform: rotate(-20deg) translateX(200px);
+}
+
+.icon {
+  height: 55px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 2%;
+}
+
+.icon.telegram {
+  content: url(/public/icons/Telegram.png);
+}
+
+.icon.instagram {
+  content: url(/public/icons/Instagram.png);
+}
+
+.icon:hover {
+  background: #4824ff;
+  filter: drop-shadow(0px 0px 35px #4824ff40);
+}
+
+.switch {
+  width: 135px;
+  height: 55px;
+  border-radius: 55px;
+  background-color: #eeebff;
+  overflow: hidden;
+}
+
+.theme {
+  margin: 2px;
+  width: 51;
+  height: 51px;
+  border-radius: 55px;
+  background-color: black;
+  filter: invert();
+  transition: 0.5s ease-in-out;
+}
+
+.theme.light {
+  content: url(/public/icons/Theme.png);
+}
+
+.switch:hover > .theme.light {
+  transform: rotate(45deg);
+}
