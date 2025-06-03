@@ -41,6 +41,15 @@ const App =() => {
           <div className="theme light"></div>
         </div>
       </header>
+
+      <div className="welcome-block">
+            <div className="first-block">
+                <h1>Мой<span className="title"> сайт</span></h1>
+                <h2 style={{marginBottom: '7%', marginTop: '7%'}}>Это<span style={{color: '#4824ff'}}> топовый</span> сайт<br/>
+                 с<span style={{color: '#4824ff'}}> красивым</span> дизайном</h2>
+            </div>
+        </div>
+
     </>
   )
 }

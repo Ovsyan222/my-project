@@ -132,3 +132,39 @@ header a:hover {
 .switch:hover > .theme.light {
   transform: rotate(45deg);
 }
+
+/* ---------WELCOME BLOCK----------- */
+
+.welcome-block {
+    height: 650px;
+    display: flex;
+    place-items: center;
+}
+
+.welcome-block h1 {
+    font-size: 5rem;
+}
+
+.welcome-block h2 {
+    font-size: 4rem;
+    font-weight: 450;
+}
+
+.title {
+    background: linear-gradient(to right, #4824ff, #4824ff, #85ebff, #eeebff, #85ebff,
+    #4824ff, #4824ff);
+    background-clip: text;
+    color: transparent;
+    background-size: 200%;
+    animation: gradientAnimation 5s linear infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {background-position: 200% 50%}
+    100% {background-position: 0% 50%}
+}
+
+.welcome-block .first-block {
+    align-content: center;
+    width: 55%;
+}
