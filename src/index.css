@@ -281,3 +281,132 @@ header a:hover {
     color: #fff;
     border: 1px solid #4824ff;
 }
+
+/* REVIEW BLOCK */
+
+
+.review-block {
+  margin: 80px 0px;
+  height: 580px;
+  background: #4824ff;
+  border-radius: 28px;
+}
+
+.review-block h1 {
+  color: white;
+  text-align: center;
+  padding-top: 36px;
+  font-size: 50px;
+}
+
+.review-block .description {
+  color: white;
+  text-align: center;
+  margin-top: -12px;
+  font-size: 22px;
+  line-height: 32px;
+}
+
+.review-block .selecting {
+  background: white;
+  color: black;
+  margin: 0px 8px;
+  font-weight: 500;
+}
+
+.review-carausel {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 1260px;
+}
+
+.review-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+.next-button {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  transition: 0.7s;
+  align-content: center;
+  margin: 16px 0 0 10px;
+}
+
+.next-button .array-next-icon {
+  content: url(/public/icons/aarow-next.png);
+  scale: 0.7;
+  height: 50px;
+  padding: -25px;
+  margin: auto;
+}
+
+.next-button:hover {
+  background: #00000050;
+}
+
+.next-button:hover .array-next-icon {
+  filter: invert(100%);
+}
+
+.review-card {
+  min-width: 420px;
+}
+
+.review-content {
+  height: 230px;
+  width: 384px;
+  background: white;
+  border-radius: 24px;
+  margin: 0 18px;
+}
+
+
+.review-block .review {
+  margin-top: auto;
+  font-size: 19px;
+  line-height: 27px;
+  width: 90%;
+}
+
+.review-block .link {
+  display: flex;
+  position: right;
+  height: 40px;
+  width: 80px;
+  background: black;
+  border-radius: 24px;
+  cursor: pointer;
+  border: 2px solid black;
+  transition: 0.5s ease-in-out;
+}
+
+.review-block .link:hover {
+  border: 2px double #4824ff;
+  filter: drop-shadow(0px 0px 25px #4824ff90);
+}
+
+.review-block .telegram-icon {
+  margin: -7px -4px;
+  padding: 0;
+  position: relative;
+  content: url(/public/icons/telegram2.png);
+  background: none;
+  scale: 0.84;
+  height: 50px;
+}
+
+.review-block .array-corner-icon {
+  margin: -6px -18px;
+  padding: 0;
+  position: relative;
+  content: url(/public/icons/arrow-corner.png);
+  scale: 0.37;
+  height: 50px;
+}

@@ -1,18 +1,19 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import ModalWindow from './ModalWindow.jsx';
 import AllGallery from './AllGallery.jsx';
 import Banners from './Banners.jsx';
 import YouTubeDesign from './YouTubeDesign.jsx';
 import YouTubeThumbnails from './YouTubeThumbnails.jsx';
 import InstagramStories from './InstagramStories.jsx';
+import Review from './Review.jsx';
 
 import "./index.css";
 
 const App =() => {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [showModal, setShowModal] = useState(false); //Модальное окно
+  const [selectedCategory, setSelectedCategory] = useState('All'); //Карусель
 
-  const renderComponent = () => {
+  const renderComponent = () => { //Карусель портфолио
     switch (selectedCategory) {
       case 'All':
         return <AllGallery/>;
@@ -29,13 +30,65 @@ const App =() => {
     }
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModal = () => { //Модальное окно
     setShowModal(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = () => { //Модальное окно
     setShowModal(false);
   };
+
+  const containerRef = useRef(null); //Комменарии
+  const reviewWidthRef = useRef(0);
+
+  const reviews = [
+    <Review key={1} name='Данила' link='sfcsc' text='Это отзыв'/>,
+    <Review key={2} name='Дмитрий' link='sfcsc' text='Это отзыв'/>,
+    <Review key={3} name='Сергей' link='sfcsc' text='Это отзыв'/>,
+  ];
+
+  const visibleReviews = 3;
+
+  const handleScroll = () => {
+    const box = containerRef.current;
+    const width = reviewWidthRef.current * visibleReviews;
+
+    if (box.scrollLeft <=0) {
+      box.style.scrollBehavior = 'auto';
+      box.scrollLeft = box.scrollWidth -2 * width;
+      box.style.scrollBehavior = 'smooth';
+    }
+
+    if (box.scrollLeft >= box.scrollWidth - width) {
+      box.style.scrollBehavior = 'auto';
+      box.scrollLeft = width;
+      box.style.scrollBehavior = 'smooth';
+    }
+  };
+
+  const btnPrevReview = () => {
+    const box = containerRef.current;
+    box.scrollLeft -= reviewWidthRef.current;
+  };
+
+  const btnNextReview = () => {
+    const box = containerRef.current;
+    box.scrollLeft += reviewWidthRef.current;
+  };
+
+  useEffect(() => {
+    const box = containerRef.current;
+    const firstReview = box.querySelector('.review-card');
+    reviewWidthRef.current = firstReview.clientWidth;
+    const width = reviewWidthRef.current * visibleReviews;
+
+    box.scrollLeft = (box.scrollWidth - width) / 2;
+    box.addEventListener('scroll', handleScroll);
+
+    return () => {
+      box.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
 
   return (
@@ -114,6 +167,27 @@ const App =() => {
             <div className="content" style={{ marginLeft: '-5vw', marginRight: '-5vw' }}>
                 {renderComponent()}
             </div>
+        </div>
+
+        <div className="review-block">
+          <h1>Отзывы</h1>
+          <p className="description">Это блок отзывов
+            <span className="selecting"> он переводит на аккаунт</span> Телеграм. Всё работает! <br/></p>
+
+          <div className="review-carausel">
+            <div className="review-container" ref={containerRef}>
+              {reviews.slice(-visibleReviews)}
+              {reviews}
+              {reviews.slice(0, visibleReviews)}
+            </div>
+          </div>
+
+          <div style={{display: "flex", justifyContent: "center"}}>
+            <p className="next-button" style={{transform: "rotate(180deg)"}}>
+            <p className="array-next-icon" onClick={btnPrevReview}/></p>
+            <p className="next-button">
+            <p className="array-next-icon" onClick={btnNextReview}/></p>
+          </div>
         </div>
 
         
