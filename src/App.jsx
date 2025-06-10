@@ -96,8 +96,11 @@ const App =() => {
       <header>
         <div className="menu">
           <a>Обо мне</a>
-          <a>Что есть</a>
+          <a>Услуги</a>
           <a>Портфолио</a>
+          <a>Отзывы</a>
+          <a>Гарантии</a>
+          <a>Обратная связь</a>
         </div>
 
         <button onClick={handleOpenModal} className="btn">Связаться</button>
@@ -172,7 +175,7 @@ const App =() => {
         <div className="review-block">
           <h1>Отзывы</h1>
           <p className="description">Это блок отзывов
-            <span className="selecting"> он переводит на аккаунт</span> Телеграм. Всё работает! <br/></p>
+            <span className="selecting">он переводит на аккаунт</span>Телеграм. Всё работает! <br/></p>
 
           <div className="review-carausel">
             <div className="review-container" ref={containerRef}>
@@ -190,7 +193,16 @@ const App =() => {
           </div>
         </div>
 
-        
+        <div className="guarantees-block">
+          <h1 style={{ fontSize: "52px", paddingBottom: "20px"}}>Гарантии</h1>
+          <ol className="guarantees-points">
+            <li className="point">Не ну гарантии <span style={{ color: "#4842ff"}}>ТОЧНО ЕСТЬ</span></li>
+            <li className="point">Не ну гарантии <span style={{ color: "#4842ff"}}>ТОЧНО ЕСТЬ</span></li>
+            <li className="point">Не ну гарантии <span style={{ color: "#4842ff"}}>ТОЧНО ЕСТЬ</span></li>
+          </ol>
+        </div>
+
+        <div className="footer">Foot</div>
 
     </>
   )
