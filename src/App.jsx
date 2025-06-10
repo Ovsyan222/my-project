@@ -10,10 +10,12 @@ import Review from './Review.jsx';
 import "./index.css";
 
 const App =() => {
-  const [showModal, setShowModal] = useState(false); //Модальное окно
-  const [selectedCategory, setSelectedCategory] = useState('All'); //Карусель
-
-  const renderComponent = () => { //Карусель портфолио
+ //Модальное окно
+  const [showModal, setShowModal] = useState(false);
+   //Карусель
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  
+  const renderComponent = () => { 
     switch (selectedCategory) {
       case 'All':
         return <AllGallery/>;
@@ -29,16 +31,16 @@ const App =() => {
         return <AllGallery/>;
     }
   };
-
-  const handleOpenModal = () => { //Модальное окно
+//Модальное окно
+  const handleOpenModal = () => { 
     setShowModal(true);
   };
 
-  const handleCloseModal = () => { //Модальное окно
+  const handleCloseModal = () => { 
     setShowModal(false);
   };
-
-  const containerRef = useRef(null); //Комменарии
+ //Коментарии
+  const containerRef = useRef(null);
   const reviewWidthRef = useRef(0);
 
   const reviews = [
@@ -90,34 +92,57 @@ const App =() => {
     };
   }, []);
 
+  const [scroll, setScroll] = useState(0);
+
+  const scrollUp = () => {
+    setScroll(window.scrollY)
+  }
+
+  const upButton = () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  }
+
+  useEffect (() => {
+    window.addEventListener("scroll", scrollUp)
+  }, [])
+
+  const toBlock = (height) => {
+    window.scrollTo({top: height, left: 0, behavior: 'smooth'})
+  }
 
   return (
     <>
       <header>
-        <div className="menu">
-          <a>Обо мне</a>
-          <a>Услуги</a>
-          <a>Портфолио</a>
-          <a>Отзывы</a>
-          <a>Гарантии</a>
-          <a>Обратная связь</a>
-        </div>
+          <div className="navigation">
+            <div className="menu">
+            <a onClick={upButton}>Обо мне</a>
+            <a onClick={(e) => toBlock(e.target.getAttribute('height'))} height="700">Услуги</a>
+            <a onClick={(e) => toBlock(e.target.getAttribute('height'))} height="1230">Портфолио</a>
+            <a onClick={(e) => toBlock(e.target.getAttribute('height'))} height="1920">Отзывы</a>
+            <a onClick={(e) => toBlock(e.target.getAttribute('height'))} height="2600">Гарантии</a>
+            <a>Обратная связь</a>
+          </div>
 
-        <button onClick={handleOpenModal} className="btn">Связаться</button>
-        <ModalWindow show={showModal} onClose={handleCloseModal}>
-          <h2 style={{color: "#4824ff", fontSize: "40px"}}>Контакты</h2>
-          <p style={{fontSize: "22px"}}>Вы можете связаться со мной в тг <br/> или в инст</p>
-        </ModalWindow>
+          <div className="header-buttons">
+            <button onClick={handleOpenModal} className="btn">Связаться</button>
+           
 
-        <a href="" target="_blank" 
-        className="icon telegram"/>
-        <a href="" target="_blank" 
-        className="icon instagram"/>
+            <a href="" target="_blank" 
+            className="icon telegram"/>
+            <a href="" target="_blank" 
+            className="icon instagram"/>
 
-        <div className="switch">
-          <div className="theme light"></div>
-        </div>
+            <div className="switch">
+              <div className="theme light"></div>
+            </div>
+            </div>
+          </div>
       </header>
+
+            <ModalWindow show={showModal} onClose={handleCloseModal}>
+              <h2 style={{color: "#4824ff", fontSize: "40px"}}>Контакты</h2>
+              <p style={{fontSize: "22px"}}>Вы можете связаться со мной в тг <br/> или в инст</p>
+            </ModalWindow>
 
       <div className="welcome-block">
             <div className="first-block">
@@ -204,8 +229,10 @@ const App =() => {
 
         <div className="footer">Foot</div>
 
+        <button className={scroll < 1960 ? "" : "btn-up"} onClick={upButton}></button>
+
     </>
-  )
+  );
 }
 
 export default App

@@ -26,14 +26,26 @@ body {
 /*-------HEADER------*/
 
 header {
+  margin-left: -5vw;
+  margin-right: -5vw;
+  position: fixed;
+  width: 90vw;
+  padding: 0 5vw 0 5vw;
+  background: #ffffffe1;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+.navigation {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 100px;
-  place-items: center;
 }
 
 .menu {
   height: 100px;
-  width: 100%;
+  width: 50vw;
   align-content: center;
 }
 
@@ -50,9 +62,15 @@ header a:hover {
   filter: drop-shadow(0px 0px 5 px #4824ff);
 }
 
+.header-buttons {
+  display: flex;
+  gap: 20px;
+}
+
 .btn {
+  position: relative;
   height: 55px;
-  width: 222px;
+  width: 165px;
   border-radius: 55px;
   background: #4824ff;
   border: none;
@@ -108,7 +126,7 @@ header a:hover {
 }
 
 .switch {
-  width: 135px;
+  width: 100px;
   height: 55px;
   border-radius: 55px;
   background-color: #eeebff;
@@ -136,7 +154,7 @@ header a:hover {
 /* ---------WELCOME BLOCK----------- */
 
 .welcome-block {
-    height: 650px;
+    height: 800px;
     display: flex;
     place-items: center;
 }
@@ -457,4 +475,36 @@ header a:hover {
   margin-left: -5vw;
   margin-right: -5vw;
   align-content: center;
+}
+
+/* --------BUTTON UP---------- */
+
+.btn-up {
+  position: fixed;
+  right: 5vw;
+  bottom: 6vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .3s linear;
+  animation: appearance 2s forwards;
+  border: none;
+  opacity: 0;
+  transform: translateY(0px);
+  background: transparent;
+}
+
+@keyframes appearance {
+  0% {opacity: 0; transform: translateY(40px)}
+  100% {opacity: 1; transform: translateY(0px)}
+}
+
+.btn-up::before {
+  content: "";
+  transform: rotate(180deg);
+  width: 70px;
+  height: 70px;
+  background-size: 100% 100%;
+  background-image: url(/public/icons/arrowBottom.png);
 }
