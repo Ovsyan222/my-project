@@ -6,12 +6,37 @@ import YouTubeDesign from './YouTubeDesign.jsx';
 import YouTubeThumbnails from './YouTubeThumbnails.jsx';
 import InstagramStories from './InstagramStories.jsx';
 import Review from './Review.jsx';
+import Theme from "./Theme.jsx";
 
 import "./index.css";
 
 const App =() => {
+  //Смена темы
+  const {theme, setTheme} = Theme();
+  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'dark';
+  });
+
+  const toggleTheme = () => {
+    if (isDarkTheme) {
+      lightTheme();
+    } else {
+      darkTheme();
+    }
+    setIsDarkTheme(!isDarkTheme);
+  };
+
+  const lightTheme = () => {
+    setTheme('light');
+  }
+
+  const darkTheme = () => {
+    setTheme('dark');
+  }
  //Модальное окно
   const [showModal, setShowModal] = useState(false);
+
    //Карусель
   const [selectedCategory, setSelectedCategory] = useState('All');
   
@@ -31,6 +56,7 @@ const App =() => {
         return <AllGallery/>;
     }
   };
+
 //Модальное окно
   const handleOpenModal = () => { 
     setShowModal(true);
@@ -39,6 +65,7 @@ const App =() => {
   const handleCloseModal = () => { 
     setShowModal(false);
   };
+
  //Коментарии
   const containerRef = useRef(null);
   const reviewWidthRef = useRef(0);
@@ -127,13 +154,12 @@ const App =() => {
             <button onClick={handleOpenModal} className="btn">Связаться</button>
            
 
-            <a href="" target="_blank" 
-            className="icon telegram"/>
-            <a href="" target="_blank" 
-            className="icon instagram"/>
+            <a href="" target="_blank" className={theme === 'light' ? "icon telegram light" : "icon telegram dark"}/>
+            <a href="" target="_blank" className={theme === 'light' ? "icon instagram light" : "icon instagram dark"}/>
 
-            <div className="switch">
-              <div className="theme light"></div>
+            <div className="switch" onClick={toggleTheme}>
+              <div className={theme === 'light' ? "theme light" : "theme dark"} 
+              style={{transform: isDarkTheme ? 'translateX(38px)' : 'translate(0)'}}></div>
             </div>
             </div>
           </div>
@@ -158,15 +184,15 @@ const App =() => {
              сайт</span> в котором есть:</p>
         
         <div style={{display: 'flex'}}>
-            <p className="tag"><p className="tag-icon"/>Баннеры</p>
-            <p className="tag"><p className="tag-icon"/>Красивый дизайн</p>
-            <p className="tag"><p className="tag-icon"/>Анимации</p>
-            <p className="tag"><p className="tag-icon"/>Написать можно</p>
+            <p className="tag"><p className={theme === 'light' ? "tag-icon icon-dark" : "tag-icon icon-light"}/>Баннеры</p>
+            <p className="tag"><p className={theme === 'light' ? "tag-icon icon-dark" : "tag-icon icon-light"}/>Красивый дизайн</p>
+            <p className="tag"><p className={theme === 'light' ? "tag-icon icon-dark" : "tag-icon icon-light"}/>Анимации</p>
+            <p className="tag"><p className={theme === 'light' ? "tag-icon icon-dark" : "tag-icon icon-light"}/>Написать можно</p>
         </div>
 
         <div style={{display: 'flex', marginTop: '16px'}}>
-            <p className="tag"><p className="tag-icon"/>Смена тем</p>
-            <p className="tag"><p className="tag-icon"/>Ещё что-то</p>
+            <p className="tag"><p className={theme === 'light' ? "tag-icon icon-dark" : "tag-icon icon-light"}/>Смена тем</p>
+            <p className="tag"><p className={theme === 'light' ? "tag-icon icon-dark" : "tag-icon icon-light"}/>Ещё что-то</p>
         </div>
 
         <p style={{fontSize: '27px'}}>Вот такой у меня получился список. Также есть<span style={{color: '#4824ff', cursor: 'pointer'}} onClick={handleOpenModal}> связь</span>.</p>
