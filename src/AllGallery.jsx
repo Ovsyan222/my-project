@@ -1,9 +1,11 @@
 import React from "react";
 import Carousel from "./Carousel";
+import Resize from "./Resize";
 
 const  AllGallery = () =>{
+    const isPortrait = Resize();
     return (
-        <div>
+        <div style={{pointerEvents: isPortrait ? '' : 'none'}}>
             <Carousel direction="left"/>
             <Carousel direction="right"/>
         </div>

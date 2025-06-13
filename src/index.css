@@ -15,6 +15,18 @@
  */
 
 
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4824ff;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #ffffff01;
+}
+
 html[data-theme='light'] {
   --main-background: white;
   --header-background: #ffffffe1;
@@ -82,7 +94,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 13vh;
 }
 
 .menu {
@@ -109,6 +121,11 @@ header a:hover {
   gap: 20px;
 }
 
+.header-buttons-mobile {
+  display: flex;
+  gap: 5vw;
+}
+
 .btn {
   position: relative;
   height: 55px;
@@ -124,6 +141,13 @@ header a:hover {
   margin-right: 2%;
   cursor: pointer;
   outline: none;
+}
+
+.btn.mobile {
+  margin-right: 0;
+  margin-top: 5vw;
+  height: 10vw;
+  width: 30vw;
 }
 
 .btn:hover {
@@ -151,7 +175,21 @@ header a:hover {
   background: var(--main-text-color);
   cursor: pointer;
   transition: 0.3s;
-  margin-right: 2%;
+}
+
+.icon-mobile {
+  margin-right: 0;
+  height: 13.5vw;
+  width: 13.5vw;
+}
+
+.icon-menu {
+  border-radius: 50%;
+  background-color: var(--switch-background);
+  border: 1px solid var(--main-elements-color);
+  cursor: pointer;
+  height: 13.45vw;
+  width: 13.45vw;
 }
 
 .icon.telegram.light,
@@ -172,15 +210,23 @@ header a:hover {
   content: url(/public/icons/Instagram-dark.png);
 }
 
+.icon-menu.light {
+  content: url(/public/icons/menu.png);
+}
+
+.icon-menu.dark {
+  content: url(/public/icons/menu-dark.png);
+}
+
 .icon:hover {
   background: #4824ff;
   filter: drop-shadow(0px 0px 35px #4824ff40);
 }
 
 .switch {
-  width: 100px;
+  width: 102px;
   height: 53px;
-  border-radius: 55px;
+  border-radius: 13.5vw;
   background-color: var(--switch-background);
   border: 1px solid var(--main-elements-color);
   overflow: hidden;
@@ -188,16 +234,27 @@ header a:hover {
   position: relative;
 }
 
+.switch-mobile {
+  width: 22vw;
+  height: 13.45vw;
+}
+
 .theme {
   margin: 2px;
   width: 48;
   height: 48px;
-  border-radius: 55px;
+  border-radius: 13.5vw;
   background-color: var(--theme-background);
   transition: transform 0.5s ease-in-out;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.theme-mobile {
+  margin: 0.5vw;
+  width: 12.45vw;
+  height: 12.45vw;
 }
 
 .theme.light {
@@ -220,13 +277,27 @@ header a:hover {
     place-items: center;
 }
 
+.welcome-block.mobile {
+  padding-top: 14vh;
+  height: 86vh;
+  flex-direction: column;
+}
+
 .welcome-block h1 {
     font-size: 5rem;
+}
+
+.welcome-block.mobile h1 {
+    font-size: 4rem;
 }
 
 .welcome-block h2 {
     font-size: 4rem;
     font-weight: 450;
+}
+
+.welcome-block.mobile h2 {
+    font-size: 3rem;
 }
 
 .title {
@@ -248,6 +319,11 @@ header a:hover {
     width: 55%;
 }
 
+.welcome-block .first-block.mobile {
+  width: 100%;
+  text-align: center;
+}
+
 /* ------SERVICE---------- */
 
 .service-block {
@@ -257,6 +333,10 @@ header a:hover {
     padding: 0 5vw;
     background: var(--service-background);
     align-content: center;
+}
+
+.service-block.mobile {
+  height: 200vw;
 }
 
 .service-block .tag {
@@ -270,6 +350,12 @@ header a:hover {
     border-radius: 24px;
 }
 
+.service-block .tag.mobile {
+  font-size: 4.5vw;
+  margin-bottom: 10px;
+  padding-left: 50px;
+}
+
 .service-block .tag .tag-icon {
     margin: -10px;
     padding: 0;
@@ -277,6 +363,10 @@ header a:hover {
     background: none;
     scale: 0.33;
     height: 50px;
+}
+
+.service-block .tag .tag-icon.mobile {
+  height: 50px;
 }
 
 .service-block .icon-dark {
@@ -299,6 +389,10 @@ header a:hover {
     align-items: center;
 }
 
+.portfolio-block .first-block.mobile {
+    margin-top: 5vw;
+}
+
 .portfolio-block .main-title {
     font-size: 56px;
     font-family: Arial, Helvetica, sans-serif;
@@ -308,11 +402,22 @@ header a:hover {
     background-clip: text;
 }
 
+.portfolio-block .main-title.mobile {
+  font-size: 28px;
+  margin-left: 3vw;
+  z-index: 1;
+}
+
 .portfolio-block .arrowBottom {
     margin: 0 20px;
     padding: 0;
     width: 75px;
     filter: drop-shadow(20px 20px 15px #4824ff25);
+}
+
+.portfolio-block .arrowBottom.mobile {
+  margin: 0 10px 4px 8px;
+  width: 45px;
 }
 
 .portfolio-block .title-border {
@@ -327,6 +432,10 @@ header a:hover {
     1px 1px 0 var(--main-border-color);
 }
 
+.portfolio-block .title-border.mobile {
+  font-size: 28px;
+}
+
 .gradient-part-one {
     position: absolute;
     background: linear-gradient(to right, transparent, var(--main-background));
@@ -335,12 +444,22 @@ header a:hover {
     width: 200px;
 }
 
-.gradient-part-one {
+.gradient-part-one.mobile {
+  height: 10vw;
+  width: 18vw;
+}
+
+.gradient-part-two {
     position: absolute;
     background: linear-gradient(to left, transparent, var(--main-background));
     color: transparent;
     height: 70px;
     width: 200px;
+}
+
+.gradient-part-two.mobile {
+  height: 10vw;
+  width: 18vw;
 }
 
 .portfolio-block .tag {
@@ -357,6 +476,10 @@ header a:hover {
     transition: 0.5s ease-in-out;
 }
 
+.portfolio-block .tag.mobile {
+  font-size: 15px;
+}
+
 .portfolio-block .tag:hover {
     background: #4824ff;
     color: white;
@@ -369,6 +492,21 @@ header a:hover {
     border: 1px solid #4824ff;
 }
 
+.filter-scrollbar {
+  margin-left: -5vw;
+  margin-right: -5vw;
+  padding-left: 5vw;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-scrollbar::-webkit-scrollbar {
+  height: 0px;
+}
+
 /* REVIEW BLOCK */
 
 
@@ -379,11 +517,14 @@ header a:hover {
   border-radius: 28px;
 }
 
+.review-block.mobile {
+  height: 168vw;
+}
+
 .review-block h1 {
   color: white;
   text-align: center;
   padding-top: 36px;
-  font-size: 50px;
 }
 
 .review-block .description {
@@ -392,6 +533,14 @@ header a:hover {
   margin-top: -12px;
   font-size: 22px;
   line-height: 32px;
+}
+
+.review-block .description.mobile {
+  text-align: left;
+  margin-top: -4vw;
+  font-size: 4.7vw;
+  line-height: 6.5vw;
+  margin: 7vw;
 }
 
 .review-block .selecting {
@@ -408,11 +557,22 @@ header a:hover {
   width: 1260px;
 }
 
+.review-carausel.mobile {
+  width: 100vw;
+  margin-left: -5vw;
+  margin-right: -5vw;
+}
+
 .review-container {
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;
   overflow: hidden;
+}
+
+.review-container.mobile {
+  width: 100vw;
+  margin: -8vw;
 }
 
 .next-button {
@@ -423,7 +583,11 @@ header a:hover {
   cursor: pointer;
   transition: 0.7s;
   align-content: center;
-  margin: 16px 0 0 10px;
+  margin: 1vw 0.2vw 1vw 0.2vw;
+}
+
+.next-button.mobile {
+  scale: 0.9;
 }
 
 .next-button .array-next-icon {
@@ -446,6 +610,10 @@ header a:hover {
   min-width: 420px;
 }
 
+.review-card.mobile {
+  min-width: 100vw;
+}
+
 .review-content {
   height: 230px;
   width: 384px;
@@ -455,19 +623,30 @@ header a:hover {
   margin: 0 18px;
 }
 
+.review-content.mobile {
+  scale: 0.9;
+  width: 80vw;
+  height: 72vw;
+  margin: 5vw;
+}
 
 .review-block .review {
   margin-top: auto;
-  font-size: 19px;
-  line-height: 27px;
-  width: 90%;
+  font-size: 30px;
+  line-height: 25px;
+  width: 95%;
+}
+
+.review-block .review.mobile {
+  font-size: 5.3vw;
+  line-height: 6.7vw;
 }
 
 .review-block .link {
   display: flex;
   position: right;
   height: 40px;
-  width: 80px;
+  width: 70px;
   background: black;
   border-radius: 24px;
   cursor: pointer;
@@ -507,6 +686,11 @@ header a:hover {
   font-size: 26px;
 }
 
+.guarantees-block.mobile {
+  height: 240vw;
+  font-size: 6vw;
+}
+
 .guarantees-points {
   list-style-type: none;
   padding-left: 20px;
@@ -515,6 +699,10 @@ header a:hover {
 .guarantees-points li {
   position: relative;
   padding-left: 60px;
+}
+
+.guarantees-points.mobile li {
+  padding-left: 8vw;
 }
 
 .guarantees-points li::before {
@@ -528,6 +716,10 @@ header a:hover {
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: -20px;
+}
+
+.guarantees-points li::before {
+  width: 9vw;
 }
 
 .point {
@@ -577,4 +769,9 @@ header a:hover {
   height: 70px;
   background-size: 100% 100%;
   background-image: url(/public/icons/arrowBottom.png);
+}
+
+.btn-up.mobile::before {
+  width: 15vw;
+  height: 15vw;
 }

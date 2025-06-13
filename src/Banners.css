@@ -6,11 +6,19 @@
     margin-right: 5vw;
 }
 
+.image-gallery.mobile {
+    flex-direction: row;
+}
+
 .image-grid {
     display: flex;
     flex-wrap: wrap;
     max-height: calc(200px * var(--visible-rows));
     overflow: hidden;
+}
+
+.image-grid.mobile {
+    max-height: 200px;
 }
 
 .gallery-image {
@@ -19,6 +27,11 @@
     border-radius: 16px;
     margin: 10px;
     cursor: pointer;
+}
+
+.gallery-image.mobile {
+    height: 175px;
+    margin: 3vw;
 }
 
 .show-more-button {

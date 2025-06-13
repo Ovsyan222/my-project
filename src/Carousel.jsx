@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import './Carousel.css';
+import Resize from "./Resize";
 
 const images = Array.from({ length: 15 }, (_, i) => `/images/all/${i + 1}.png`);
 
 const Carousel = ({ direction }) => {
+    const isPortrait = Resize();
     const carouselRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const requestIdRef = useRef(null);
@@ -42,10 +44,10 @@ const Carousel = ({ direction }) => {
             onMouseLeave={() => setIsHovered(false)}>
             <div className="carousel-content">
                 {images.map((image, index) => (
-                    <img key={index} src={image} className="carousel-image" onClick={() => setSelectedImage(image)} />
+                    <img key={index} src={image} className={isPortrait ? "carousel-image" : "carousel-image mobile"} onClick={() => setSelectedImage(image)} />
                 ))}
                 {images.map((image, index) => (
-                    <img key={index} src={image} className="carousel-image" onClick={() => setSelectedImage(image)} />
+                    <img key={index} src={image} className={isPortrait ? "carousel-image" : "carousel-image mobile"} onClick={() => setSelectedImage(image)} />
                 ))}
             </div>
             {selectedImage && (
